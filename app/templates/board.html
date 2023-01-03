@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <p> Connected to board : {{ context['config']["IP"] }}</p>
+</div>
+
+
+<div>
+    <p>
+        number of gpio are {{ context["config"]["config"]["gpio"]["count"] }}
+    </p>
+</div>
+
+
+{% for pin in context["config"]["config"]["gpio"]["pins"]%}
+<div class='pin'>
+    <h3>Pin: {{ pin['idx'] }}</h3> <button type="button" onclick="pin_direction_change()">Change direction</button>
+</div>
+{% endfor %}
+
+{% endblock %}

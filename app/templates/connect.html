@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post" method = "POST" enctype = "multipart/form-data">
+    <label for="Board IP">Board IP(for local machine, use 127.0.0.1)</label>
+    <br>
+    <input type="text" name="IP"
+           placeholder=""
+           value="{{ request.form['IP'] }}"></input>
+    <br>
+
+    <input type = "file" name = "file" />
+    <br>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
