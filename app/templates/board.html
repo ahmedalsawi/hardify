@@ -6,6 +6,7 @@
     <p> Connected to board : {{ context['config']["IP"] }}</p>
 </div>
 
+<h1> GPIO </h1>
 
 <div>
     <p>
@@ -16,7 +17,52 @@
 
 {% for pin in context["config"]["config"]["gpio"]["pins"]%}
 <div class='pin'>
-    <h3>Pin: {{ pin['idx'] }}</h3> <button type="button" onclick="pin_direction_change()">Change direction</button>
+    <h3>Pin: {{ pin['idx'] }}</h3> 
+    <p>Value:</p> <p>0</p>
+    <p>Direction:</p> <p>Out</p> <button type="button" onclick="pin_direction_change()">Change direction</button>
+    <br>
+    <input type="text" id="value" name="value"> <button type="button" onclick="pin_direction_change()">Change value</button>
+</div>
+{% endfor %}
+
+<h1>Raw I2C</h1>
+
+<form onsubmit="return doSomething();" >
+    <label for="Bus">Bus ID:</label>
+    <br>
+    <input type="text" name="busID"
+           placeholder=""
+           value=""></input>
+    <br>
+
+    <label for="">Slave address</label>
+    <input type="text" name="slv"
+           placeholder=""
+           value=""></input>
+    <br>
+
+
+    <label for="">Reg address</label>
+    <input type="text" name="reg address"
+           placeholder=""
+           value=""></input>
+    <br>
+
+
+    <label for="">Write Value</label>
+    <input type="text" name="reg address"
+           placeholder=""
+           value=""></input>
+    <br>
+
+    <button type="submit">Send</button>
+</form>
+
+<h1> Sensors </h1>
+{% for p in context["config"]["config"]["sensors"]%}
+<div class='pin'>
+    <h3>sensor: {{ p['name'] }}</h3>
+    <p>Direction:</p> <p>Out</p> <button type="button" onclick="pin_direction_change()">get reading</button>
 </div>
 {% endfor %}
 
